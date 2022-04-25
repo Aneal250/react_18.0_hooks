@@ -1,9 +1,11 @@
 import './App.css';
+import Counter from './components/Counter';
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to React 18.0 Hooks</h1>
+      <Counter/>
     </div>
   );
 }
