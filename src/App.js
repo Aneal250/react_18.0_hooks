@@ -1,11 +1,28 @@
-import './App.css';
+import { useState } from "react";
+import { createTodos } from "./components/utils";
+import TodoList from "./components/TodoList";
 
-function App() {
+const todos = createTodos();
+
+export default function App() {
+  const [tab, setTab] = useState("all");
+  const [isDark, setIsDark] = useState(false);
   return (
-    <div className="App">
-      <h1>Welcome to React 18.0 Hooks</h1>
-    </div>
+    <>
+      <button onClick={() => setTab("all")}>All</button>
+      <button onClick={() => setTab("active")}>Active</button>
+      <button onClick={() => setTab("completed")}>Completed</button>
+      <br />
+      <label>
+        <input
+          type="checkbox"
+          checked={isDark}
+          onChange={(e) => setIsDark(e.target.checked)}
+        />
+        Dark mode
+      </label>
+      <hr />
+      <TodoList todos={todos} tab={tab} theme={isDark ? "dark" : "light"} />
+    </>
   );
 }
-
-export default App;
